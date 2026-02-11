@@ -130,7 +130,7 @@ class ModelLookupForm(forms.Form):
     def lookup(self):
         qs = self.model_cls.objects
 
-        if getattr(self.model_cls, "jet_lookup_queryset"):
+        if getattr(self.model_cls, "jet_lookup_queryset", None):
             ctx_info = resolve(
                 urlparse(
                     self.request.META.get("HTTP_REFERER", None)
